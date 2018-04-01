@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "sequelize_username",
+    "password": "sequelize_password",
+    "database": "sequelize_database",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "sequelize_username",
+    "password": "sequelize_password",
+    "database": "sequelize_database_test",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "sequelize_username",
+    "password": "sequelize_password",
+    "database": "sequelize_database_prod",
+    "host": "localhost",
+    "dialect": "mysql"
+  }
+}
