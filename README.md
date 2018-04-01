@@ -8,7 +8,7 @@ Following tutorial here
 
 `GRANT ALL PRIVILEGES ON *.* TO 'sequelize_username'@'localhost' WITH GRANT OPTION;` per [here](https://dev.mysql.com/doc/refman/5.5/en/adding-users.html).
 
-ERROR: Access denied for user 'sequelize_username'@'localhost' to database 'sequelize_database'
+* ERROR: Access denied for user 'sequelize_username'@'localhost' to database 'sequelize_database'
 
 
 ### Migrations
@@ -34,9 +34,19 @@ db:migrate:undo
 
 
 ##### Seed
-node_modules/.bin/sequelize seed:generate --name demo-user
+`node_modules/.bin/sequelize seed:generate --name demo-user`
+(created file 20180401030311-demo-user.js)
 
+modified that seed file
 
+`node_modules/.bin/sequelize db:seed:all`
+
+* ERROR: Field 'createdAt' doesn't have a default value
+* (Make sure the create_at column in the association table have not the `:null => false` option.)
+* (Found equivalent logic in migrations folder)
+
+altered migration script to include the following, for each `createdAt` and `updatedAt`:
+    `defaultValue: Sequelize.fn('now'),`
 
 
 
