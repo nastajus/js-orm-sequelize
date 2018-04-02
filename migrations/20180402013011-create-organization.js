@@ -14,6 +14,17 @@ module.exports = {
       orgAddress: {
         type: Sequelize.STRING
       },
+      userId: {
+	      type: Sequelize.INTEGER
+      },
+      // ERROR: Cannot read property 'toString' of undefined, when running db:migrate
+      // userId: {
+      //   foreignKey: true,
+      //   references: {
+      //     model: 'Users',
+      //     key: 'userId'
+      //   }
+      // },
       createdAt: {
         allowNull: false,
         defaultValue: Sequelize.fn('now'),

@@ -8,7 +8,12 @@ module.exports = (sequelize, DataTypes) => {
 	    allowNull: false
     },
     orgName: DataTypes.STRING,
-    orgAddress: DataTypes.STRING
+    orgAddress: DataTypes.STRING,
+    userId: {
+        type: DataTypes.INTEGER,
+        references: { model: 'users', key: 'userId' }
+    }
+
   }, {});
   Organization.associate = function(models) {
     Organization.hasMany(models.user, {
