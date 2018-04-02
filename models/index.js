@@ -8,11 +8,11 @@ let env       = process.env.NODE_ENV || 'development';
 let config    = require(__dirname + '/..\config\config.json')[env];
 let db        = {};
 
-if (config.use_env_variable) {
-  let sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
+// if (config.use_env_variable) {
+//   let sequelize = new Sequelize(process.env[config.use_env_variable], config);
+// } else {
   let sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
+//}
 
 fs
   .readdirSync(__dirname)
@@ -23,6 +23,13 @@ fs
     let model = sequelize['import'](path.join(__dirname, file));
     db[model.name] = model;
   });
+
+// const models = {
+// 	User: sequelize.import('./users'),
+// 	Channel: sequelize.import('./channel'),
+// 	Message: sequelize.import('./message'),
+// 	Team: sequelize.import('./team'),
+// }
 
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
